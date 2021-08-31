@@ -12,22 +12,22 @@ function SwipeButtons() {
     return (
         <div className="swipeButtons">
             <IconButton className="swipeButton_repeat">
-            <ReplayIcon fontSize="large"></ReplayIcon>
+            <ReplayIcon  fontSize="large" style={{color:"#f5b748"}}></ReplayIcon>
             </IconButton>
              
             <IconButton className="swipeButton_left">
-            <CloseIcon fontSize="large"/>   
+            <CloseIcon  fontSize="large" style={{color:"#ec5e6f"}}/>   
             </IconButton>
 
             <IconButton className="swipeButton_star">
-            <StarRateIcon fontSize="large"/>    
+            <StarRateIcon fontSize="large" style={{color:"#62b4f9"}}/>    
             </IconButton>
 
             <IconButton className="swipeButton_right">
-            <FavoriteIcon fontSize="large"/>  
+            <FavoriteIcon fontSize="large" style={{color:"#f5b748"}}/>  
             </IconButton>
 
-            <IconButton className="swipeButton_lightning">
+            <IconButton className="swipeButton_lightning" style={{color:"#915dd1"}} >
             <FlashOnIcon fontSize="large"/> 
             </IconButton>
 

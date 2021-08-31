@@ -1,23 +1,20 @@
 import { SwipeableDrawer } from '@material-ui/core';
 import Person from '@material-ui/icons/Person';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TinderCard from 'react-tinder-card';
 import "./TinderCards.css"
+import axios from './axios';
 
 function TinderCards() {
-    const [people,setPeople]=useState([//people names
-
-        {
-            name:'Martin Garrix',
-            url:"https://pbs.twimg.com/profile_images/1393521616705970178/f6zUmv7a_400x400.jpg",
-        },
-
-        {
-            name:'Alesso',
-            url:"https://edm.com/.image/ar_1:1%2Cc_fill%2Ccs_srgb%2Cq_auto:good%2Cw_1200/MTYzODA2NTIzMDExNzA0NTQ1/alesso.png",
-        },
-    ]);
-
+    const [people,setPeople]=useState([]);//when tinder cards load, this code runs once
+    useEffect(()=>{
+    async function fetchData(){
+        const req =await axios.get('./tinder/cards');
+        setPeople(req.data);
+    }
+    fetchData();
+    },[]/*very imp to keep this empty so that you it wont run everytime ex name changes*/)
+console.log(people);
 //functions
 
 const swiped=(direction,nameToDelete)=>{
@@ -40,7 +37,7 @@ const outOfFrame=(name)=>{
                  onSwipe={(dir)=>swiped(dir,people.name)} 
                  onCardLeftScreen={()=>outOfFrame(people.name)}>
 
-                     <div style={{backgroundImage:`url(${people.url})`}}/*inline styling*/ className="card">
+                     <div style={{backgroundImage:`url(${people.imageUrl})`}}/*inline styling*/ className="card">
                          <h3>{people.name}</h3>
                          
                      </div>
